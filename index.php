@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Site | v1</title>
+    <title>Blog v1</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
                 <li><a href="about.php">About</a></li>
                 <li><a href="services.php">Services</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="signin.php">Login</a></li>
+                <!-- <li><a href="signin.php">Login</a></li> -->
                 <li class="nav__profile">
                     <div class="avatar">
                         <img src="./images/avatar2.jpg" alt="Avatar" />

@@ -170,9 +170,15 @@ nav button {
 .nav__profile ul li a {
     padding: 1rem;
     background: var(--color-gray-900);
-    display: block;
+    display: flex;
+    justify-content: center;
     width: 100%;
     border-bottom: var(--color-bg);
+}
+
+.nav__profile ul li:last-child,
+.nav__profile ul li:last-child a {
+    background: var(--color-red);
 }
 
 /* END NAVBAR */
@@ -182,7 +188,7 @@ nav button {
     border-radius: var(--card-border-radius-5) 0;
     border: 1rem solid var(--color-gray-900);
     overflow: hidden;
-    margin-bottom: 1.6rem;
+    /* margin-bottom: 1.6rem; */
 }
 
 .post:hover .post__thumbnail img {
@@ -206,6 +212,10 @@ nav button {
     color: var(--color-white);
 }
 
+.post .post__info .category__button {
+    margin-top: 1.6rem;
+}
+
 .post__author {
     display: flex;
     gap: 1rem;
@@ -227,9 +237,11 @@ nav button {
 }
 
 .featured__container {
+    border-bottom: 1px solid var(--color-gray-900);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
+    padding-bottom: 3rem;
 }
 
 .featured .post__thumbnail {
@@ -300,6 +312,7 @@ footer {
 .footer__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    text-align: center;
 }
 
 footer h4 {
@@ -368,13 +381,14 @@ footer ul a:hover {
     .nav__items {
         position: absolute;
         flex-direction: column;
-        top: 13.25rem;
+        top: 11.5rem;
         right: 0;
         width: 12rem;
         align-items: flex-start;
         justify-content: center;
         gap: 0;
         display: none;
+        perspective: 400px;
     }
 
     .nav__items li {
@@ -386,29 +400,122 @@ footer ul a:hover {
         box-shadow: -2rem 3rem 7rem rgba(0, 0, 0, 0.7);
         background: var(--color-gray-900);
         border-bottom: 1px solid var(--color-bg);
+        animation: animateDropdown 400ms 0s ease forwards;
+        opacity: 0;
+        transform-origin: top;
+    }
+
+    .nav__items li:nth-child(2) {
+        animation-delay: 200ms;
+    }
+
+    .nav__items li:nth-child(3) {
+        animation-delay: 400ms;
+    }
+
+    .nav__items li:nth-child(4) {
+        animation-delay: 600ms;
+    }
+
+    .nav__items li:nth-child(5) {
+        animation-delay: 800ms;
+    }
+
+    @keyframes animateDropdown {
+        0% {
+            transform: rotateX(90deg);
+        }
+
+        100% {
+            transform: rotateX(0deg);
+            opacity: 1;
+        }
     }
 
     .nav__items li a {
         border-radius: 0;
         width: 100%;
         height: 100%;
-        padding: 0 2rem;
+        /* padding: 0 2rem; */
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     .nav__profile ul {
-        top: 100%;
+        top: 101%;
         width: 100%;
     }
 
     .nav__profile .avatar {
-        margin-left: 2rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* margin-left: 2rem; */
         border: 0;
+    }
+
+    .nav__profile .avatar img {
+        width: 2.5rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        border: 0.3rem solid var(--color-bg);
     }
 
     .nav__profile ul li a {
         padding: 0;
-        margin-left: 2rem;
+        /* margin-left: 2rem; */
+    }
+
+    .featured__container {
+        gap: 3rem;
+    }
+
+    .posts__container {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .footer__container {
+        grid-template-columns: 1fr 1fr;
+        text-align: start;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section {
+        margin-top: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .featured {
+        margin-top: 6rem;
+    }
+
+    .featured__container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .posts__container {
+        grid-template-columns: 1fr;
+    }
+
+    .category__buttons-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .featured .featured__container .post__info .category__button {
+        margin-top: 1.6rem;
     }
 }
