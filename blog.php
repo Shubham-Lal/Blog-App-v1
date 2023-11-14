@@ -67,7 +67,7 @@
                     <img src="./images/blog2.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Robotics</a>
+                    <a href="category-posts.php" class="category__button">Robotics</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -92,7 +92,7 @@
                     <img src="./images/blog3.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Wildlife</a>
+                    <a href="category-posts.php" class="category__button">Wildlife</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -117,7 +117,7 @@
                     <img src="./images/blog5.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Photography</a>
+                    <a href="category-posts.php" class="category__button">Photography</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -142,7 +142,7 @@
                     <img src="./images/blog6.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Food</a>
+                    <a href="category-posts.php" class="category__button">Food</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -167,7 +167,7 @@
                     <img src="./images/blog7.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Landscape</a>
+                    <a href="category-posts.php" class="category__button">Landscape</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -192,7 +192,7 @@
                     <img src="./images/blog8.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Landscape</a>
+                    <a href="category-posts.php" class="category__button">Landscape</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -217,7 +217,7 @@
                     <img src="./images/blog9.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Accessory</a>
+                    <a href="category-posts.php" class="category__button">Accessory</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -242,7 +242,7 @@
                     <img src="./images/blog10.jpg" alt="Blog">
                 </div>
                 <div class="post__info">
-                    <a href="#" class="category__button">Movie</a>
+                    <a href="category-posts.php" class="category__button">Movie</a>
                     <h3 class="post__title">
                         <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
                     </h3>
@@ -269,12 +269,12 @@
     <!-- CATEGORIES -->
     <section class="category__buttons">
         <div class="container category__buttons-container">
-            <a href="#" class="category__button">Movie</a>
-            <a href="#" class="category__button">Technology</a>
-            <a href="#" class="category__button">Wildlife</a>
-            <a href="#" class="category__button">Landscape</a>
-            <a href="#" class="category__button">Accessory</a>
-            <a href="#" class="category__button">Photography</a>
+            <a href="category-posts.php" class="category__button">Movie</a>
+            <a href="category-posts.php" class="category__button">Technology</a>
+            <a href="category-posts.php" class="category__button">Wildlife</a>
+            <a href="category-posts.php" class="category__button">Landscape</a>
+            <a href="category-posts.php" class="category__button">Accessory</a>
+            <a href="category-posts.php" class="category__button">Photography</a>
         </div>
     </section>
     <!-- END CATEGORIES -->
