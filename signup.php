@@ -53,7 +53,7 @@
             <div class="alert__message error">
                 <p>This is an error message!</p>
             </div>
-            <form action="">
+            <form action="" enctype="multipart/form-data">
                 <div class="input__name">
                     <input type="text" placeholder="First Name">
                     <input type="text" placeholder="Last Name">
