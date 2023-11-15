@@ -1,5 +1,5 @@
 **SETUP**
-1) Create a `.env` in the root folder & also in `admin` folder.
+1) Create a `.env` file in the `config` folder & also in `admin/config` folder.
 2) Add these environment variables into these `.env` files:
 ```
 ROOT_URL=

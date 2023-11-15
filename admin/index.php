@@ -1,12 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once __DIR__ . '/../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 include './partials/header.php';
 ?>
 
@@ -73,44 +65,44 @@ include './partials/header.php';
                     <tr>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Wildlife</td>
-                        <td><a href="edit-post.php" class="btn sm">Edit</a></td>
+                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
                         <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Lorem ipsum dolor sit amet.</td>
                         <td>Landscape</td>
-                        <td><a href="edit-post.php" class="btn sm">Edit</a></td>
+                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
                         <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Lorem, ipsum dolor sit amet consectetur adipisicing.</td>
                         <td>Movie</td>
-                        <td><a href="edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
+                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
+                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam!</td>
                         <td>Landscape</td>
-                        <td><a href="edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
+                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
+                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Lorem, ipsum dolor sit amet consectetur adipisicing.</td>
                         <td>Movie</td>
-                        <td><a href="edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
+                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
+                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Wildlife</td>
-                        <td><a href="edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
+                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
+                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Lorem ipsum dolor sit amet.</td>
                         <td>Landscape</td>
-                        <td><a href="edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
+                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
+                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
                     </tr>
                 </tbody>
             </table>
