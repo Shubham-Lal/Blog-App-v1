@@ -95,6 +95,10 @@ section {
     width: 100vw;
 }
 
+.section__extra-margin {
+    margin-top: 7rem;
+}
+
 .btn {
     display: inline-block;
     width: fit-content;
@@ -207,7 +211,7 @@ nav button {
     display: flex;
     justify-content: center;
     width: 100%;
-    border-bottom: var(--color-bg);
+    /* border-bottom: var(--color-bg); */
 }
 
 .nav__profile ul li:last-child,
@@ -494,6 +498,10 @@ section.form__section {
     color: var(--color-green);
 }
 
+.alert__message.lg {
+    text-align: center;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -653,9 +661,10 @@ select {
     .nav__items {
         position: absolute;
         flex-direction: column;
-        top: 11.5rem;
+        top: 4.5rem;
         right: 0;
         width: 12rem;
+        height: fit-content;
         align-items: flex-start;
         justify-content: center;
         gap: 0;
