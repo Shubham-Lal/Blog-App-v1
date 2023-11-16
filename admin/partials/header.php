@@ -1,5 +1,5 @@
 <?php
-require '../config/database.php';
+require 'config/database.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +29,8 @@ require '../config/database.php';
                 <li><a href="<?= ROOT_URL ?>about.php">About</a></li>
                 <li><a href="<?= ROOT_URL ?>services.php">Services</a></li>
                 <li><a href="<?= ROOT_URL ?>contact.php">Contact</a></li>
-                <!-- <li><a href="<?= ROOT_URL ?>signin.php">Login</a></li> -->
-                <li class="nav__profile">
+                <li><a href="<?= ROOT_URL ?>signin.php">Login</a></li>
+                <!-- <li class="nav__profile">
                     <div class="avatar">
                         <img src="<?= ROOT_URL ?>images/avatar2.jpg" alt="Avatar" />
                     </div>
@@ -38,7 +38,7 @@ require '../config/database.php';
                         <li><a href="<?= ROOT_URL ?>admin">Dashboard</a></li>
                         <li><a href="<?= ROOT_URL ?>logout.php">Logout</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
 
             <button id="open__nav-btn">
