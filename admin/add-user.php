@@ -9,7 +9,7 @@ include './partials/header.php';
             <p>This is an error message!</p>
         </div>
         <form action="" enctype="multipart/form-data">
-            <div class="input__name">
+            <div class="input__row">
                 <input type="text" placeholder="First Name">
                 <input type="text" placeholder="Last Name">
             </div>

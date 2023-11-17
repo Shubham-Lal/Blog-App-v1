@@ -6,7 +6,7 @@ include './partials/header.php';
     <div class="container form__section-container">
         <h2>Edit User</h2>
         <form action="" enctype="multipart/form-data">
-            <div class="input__name">
+            <div class="input__row">
                 <input type="text" placeholder="First Name">
                 <input type="text" placeholder="Last Name">
             </div>

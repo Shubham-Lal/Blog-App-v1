@@ -508,14 +508,14 @@ form {
     gap: 0.75rem;
 }
 
-.input__name {
+.input__row {
     width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
 }
 
-.input__name input {
+.input__row input {
     width: 100%;
 }
 
@@ -822,6 +822,10 @@ select {
         font-size: 2rem;
     }
 
+    input {
+        padding: 0.8rem 0.8rem;
+    }
+
     .featured {
         margin-top: 6rem;
     }
@@ -915,6 +919,10 @@ select {
 
     #hide__sidebar-btn {
         display: none;
+    }
+
+    .input__row input {
+        padding: 0.8rem 0.8rem;
     }
 }
 

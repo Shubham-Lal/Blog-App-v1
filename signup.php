@@ -24,15 +24,18 @@ unset($_SESSION['signup-data']);
             </div>
         <?php endif ?>
         <form method="POST" action="<?= ROOT_URL ?>signup-logic.php" enctype="multipart/form-data">
-            <div class="input__name">
+            <div class="input__row">
                 <input name="firstname" type="text" placeholder="First Name" value="<?= $firstname ?>">
                 <input name="lastname" type="text" placeholder="Last Name" value="<?= $lastname ?>">
             </div>
             <input name="username" type="text" placeholder="Username" value="<?= $username ?>">
             <input name="email" type="email" placeholder="Email Address" value="<?= $email ?>">
-            <input name="createpassword" type="password" placeholder="Create Password" value="<?= $createpassword ?>">
-            <input name="confirmpassword" type="password" placeholder="Confirm Password"
-                value="<?= $confirmpassword ?>">
+            <div class="input__row">
+                <input name="createpassword" type="password" placeholder="Create Password"
+                    value="<?= $createpassword ?>">
+                <input name="confirmpassword" type="password" placeholder="Confirm Password"
+                    value="<?= $confirmpassword ?>">
+            </div>
             <div class="form__control">
                 <label for="avatar">User Avatar</label>
                 <input name="avatar" type="file" id="avatar">
