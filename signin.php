@@ -5,9 +5,15 @@ include './partials/header.php';
 <section class="form__section">
     <div class="container form__section-container">
         <h2>Sign In</h2>
-        <div class="alert__message success">
-            <p>This is a success message!</p>
-        </div>
+        <?php if (isset($_SESSION['signup-success'])): ?>
+            <div class="alert__message success">
+                <p>
+                    <?= $_SESSION['signup-success'];
+                    unset($_SESSION['signup-success']);
+                    ?>
+                </p>
+            </div>
+        <?php endif ?>
         <form action="">
             <input type="text" placeholder="Username or Email">
             <input type="password" placeholder="Password">

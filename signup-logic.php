@@ -31,7 +31,6 @@ if (isset($_POST['submit'])) {
         else {
             // Hash password
             $hashed_password = password_hash($createpassword, PASSWORD_DEFAULT);
-            echo $hashed_password;
 
             // Check Username & Email availability
             $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email'";
@@ -63,11 +62,23 @@ if (isset($_POST['submit'])) {
     }
 
     // Redirect to "signup.php" if any error - $_SESSION['signup']
-    if ($_SESSION['signup']) {
+    if (isset($_SESSION['signup'])) {
+        $_SESSION['signup-data'] = $_POST;
         header('location: ' . ROOT_URL . 'signup.php');
         die();
     } else {
         // Create new User
+        $insert_user_query = "INSERT INTO users (firstname, lastname, username, email, password, avatar, is_admin) VALUES('$firstname', '$lastname', '$username', '$email', '$hashed_password', '$avatar_name', 0)";
+        // $insert_user_query = "INSERT INTO users SET firstname='$firstname', lastname='$lastname', username='$username', email='$email', password='$hashed_password', avatar='$avatar_name', is_admin=0";
+
+        $insert_user_result = mysqli_query($connection, $insert_user_query);
+
+        if (!mysqli_errno($connection)) {
+            // Redirect to Login page - No error
+            $_SESSION['signup-success'] = "Account created! Please login.";
+            header('location: ' . ROOT_URL . 'signin.php');
+            die();
+        }
     }
 } else {
     // Redirect back to "signup.php" page - "submit" button was not clicked
