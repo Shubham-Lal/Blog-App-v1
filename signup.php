@@ -1,6 +1,11 @@
 <?php
 include './partials/header.php';
 
+if (isset($_SESSION['user-id'])) {
+    header('location: ' . ROOT_URL);
+    die();
+}
+
 $firstname = $_SESSION['signup-data']['firstname'] ?? null;
 $lastname = $_SESSION['signup-data']['lastname'] ?? null;
 $username = $_SESSION['signup-data']['username'] ?? null;

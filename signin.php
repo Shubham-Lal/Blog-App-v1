@@ -1,6 +1,11 @@
 <?php
 include './partials/header.php';
 
+if (isset($_SESSION['user-id'])) {
+    header('location: ' . ROOT_URL);
+    die();
+}
+
 $username_email = $_SESSION['signin-data']['username_email'] ?? null;
 $password = $_SESSION['signin-data']['password'] ?? null;
 unset($_SESSION['signin-data']);
