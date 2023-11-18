@@ -13,41 +13,43 @@ include './partials/header.php';
         <aside>
             <ul>
                 <li>
-                    <a href="add-post.php">
+                    <a href="<?= ROOT_URL ?>admin/add-post.php">
                         <i class="uil uil-pen"></i>
                         <h5>Add Post</h5>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin">
+                    <a href="<?= ROOT_URL ?>admin/">
                         <i class="uil uil-postcard"></i>
                         <h5>Manage Posts</h5>
                     </a>
                 </li>
-                <li>
-                    <a href="add-user.php">
-                        <i class="uil uil-user-plus"></i>
-                        <h5>Add User</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="manage-users.php">
-                        <i class="uil uil-users-alt"></i>
-                        <h5>Manage Users</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="add-category.php">
-                        <i class="uil uil-edit"></i>
-                        <h5>Add Category</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="manage-categories.php" class="active">
-                        <i class="uil uil-list-ul"></i>
-                        <h5>Manage Categories</h5>
-                    </a>
-                </li>
+                <?php if (isset($_SESSION['user_is_admin'])): ?>
+                    <li>
+                        <a href="<?= ROOT_URL ?>admin/add-user.php">
+                            <i class="uil uil-user-plus"></i>
+                            <h5>Add User</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= ROOT_URL ?>admin/manage-users.php">
+                            <i class="uil uil-users-alt"></i>
+                            <h5>Manage Users</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= ROOT_URL ?>admin/add-category.php">
+                            <i class="uil uil-edit"></i>
+                            <h5>Add Category</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= ROOT_URL ?>admin/manage-categories.php" class="active">
+                            <i class="uil uil-list-ul"></i>
+                            <h5>Manage Categories</h5>
+                        </a>
+                    </li>
+                <?php endif ?>
             </ul>
         </aside>
         <main>
