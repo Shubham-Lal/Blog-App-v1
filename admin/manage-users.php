@@ -2,7 +2,7 @@
 include './partials/header.php';
 
 $current_admin_id = $_SESSION['user-id'];
-$query = "SELECT * FROM users WHERE NOT id=$current_admin_id";
+$query = "SELECT * FROM users WHERE NOT id=$current_admin_id ORDER BY id DESC";
 $users = mysqli_query($connection, $query);
 ?>
 

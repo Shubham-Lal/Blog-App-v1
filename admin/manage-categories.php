@@ -1,5 +1,8 @@
 <?php
 include './partials/header.php';
+
+$query = "SELECT * FROM categories ORDER BY title";
+$categories = mysqli_query($connection, $query);
 ?>
 
 <section class="dashboard">
@@ -65,37 +68,34 @@ include './partials/header.php';
         </aside>
         <main>
             <h2>Manage Categories</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Travel</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Food</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Movie</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Wildlife</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <?php if (mysqli_num_rows($categories) > 0): ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($category = mysqli_fetch_assoc($categories)): ?>
+                            <tr>
+                                <td>
+                                    <?= $category['title'] ?>
+                                </td>
+                                <td><a href="<?= ROOT_URL ?>admin/edit-category.php?id=<?= $category['id'] ?>"
+                                        class="btn sm">Edit</a></td>
+                                <td><a href="<?= ROOT_URL ?>admin/delete-category.php?id=<?= $category['id'] ?>"
+                                        class="btn sm danger">Delete</a></td>
+                            </tr>
+                        <?php endwhile ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <div class="alert__message error">
+                    <p>No categories found!</p>
+                </div>
+            <?php endif ?>
         </main>
     </div>
 </section>
