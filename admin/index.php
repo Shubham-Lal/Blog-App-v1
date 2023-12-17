@@ -1,5 +1,10 @@
 <?php
 include './partials/header.php';
+
+$current_user_id = $_SESSION['user-id'];
+$query = "SELECT id, title, category_id FROM posts WHERE author_id=$current_user_id ORDER BY id DESC";
+$posts = mysqli_query($connection, $query);
+
 ?>
 
 <section class="dashboard">
@@ -65,28 +70,44 @@ include './partials/header.php';
         </aside>
         <main>
             <h2>Manage Posts</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Catgeory</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Blog's Title</td>
-                        <td>Blog's Category</td>
-                        <td><a href="<?= ROOT_URL ?>admin/edit-post.php?id=" class="btn sm">Edit</a>
-                        </td>
-                        <td><a href="<?= ROOT_URL ?>admin/delete-post.php?id=" class="btn sm danger">Delete</a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- <div class="alert__message error">
+            <?php if (mysqli_num_rows($posts) > 0): ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Catgeory</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($post = mysqli_fetch_assoc($posts)): ?>
+                            <?php
+                            $category_id = $post['category_id'];
+                            $category_query = "SELECT title from categories where id=$category_id";
+                            $category_result = mysqli_query($connection, $category_query);
+                            $category = mysqli_fetch_assoc($category_result);
+                            ?>
+                            <tr>
+                                <td>
+                                    <?= $post['title'] ?>
+                                </td>
+                                <td>
+                                    <?= $category['title'] ?>
+                                </td>
+                                <td><a href="<?= ROOT_URL ?>admin/edit-post.php?id=<?= $post['id'] ?>" class="btn sm">Edit</a>
+                                </td>
+                                <td><a href="<?= ROOT_URL ?>admin/delete-post.php?id=<?= $post['id'] ?>"
+                                        class="btn sm danger">Delete</a></td>
+                            </tr>
+                        <?php endwhile ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <div class="alert__message error">
                     <p>No blogs yet!</p>
-                </div> -->
+                </div>
+            <?php endif ?>
         </main>
     </div>
 </section>
