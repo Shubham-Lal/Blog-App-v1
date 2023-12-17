@@ -1,5 +1,12 @@
 <?php
 include './partials/header.php';
+
+$query = "SELECT * FROM categories ORDER BY CASE WHEN id = 1 THEN 0 ELSE 1 END, title ASC";
+$categories = mysqli_query($connection, $query);
+
+$title = $_SESSION['add-post-data']['title'] ?? null;
+$body = $_SESSION['add-post-data']['body'] ?? null;
+unset($_SESSION['add-post-data']);
 ?>
 
 <section class="dashboard">
@@ -54,28 +61,36 @@ include './partials/header.php';
         </aside>
         <main>
             <h2>New Post</h2>
-            <div class="alert__message success">
-                <p>This is a success message!</p>
-            </div>
-            <form action="" enctype="multipart/form-data">
-                <input type="text" placeholder="Title">
-                <select>
-                    <option value="1">Travel</option>
-                    <option value="2">Movie</option>
-                    <option value="3">Street Art</option>
-                    <option value="4">Photography</option>
-                    <option value="5">Food</option>
-                </select>
-                <textarea rows="10" placeholder="Body"></textarea>
-                <div class="form__control inline">
-                    <input type="checkbox" id="is_featured" checked="true">
-                    <label for="is_featured" checked>Featured</label>
+            <?php if (isset($_SESSION['add-post'])): ?>
+                <div class="alert__message error">
+                    <p>
+                        <?= $_SESSION['add-post'];
+                        unset($_SESSION['add-post']);
+                        ?>
+                    </p>
                 </div>
+            <?php endif ?>
+            <form action="<?= ROOT_URL ?>admin/add-post-logic.php" method="POST" enctype="multipart/form-data">
+                <?php if (isset($_SESSION['user_is_admin'])): ?>
+                    <div class="form__control inline">
+                        <label for="is_featured" checked>Featured</label>
+                        <input name="is_featured" type="checkbox" id="is_featured" checked value="1">
+                    </div>
+                <?php endif ?>
+                <input name="title" type="text" placeholder="Title" value="<?= $title ?>">
+                <select name="category_id">
+                    <?php while ($category = mysqli_fetch_assoc($categories)): ?>
+                        <option value="<?= $category['id'] ?>">
+                            <?= $category['title'] ?>
+                        </option>
+                    <?php endwhile ?>
+                </select>
+                <textarea name="body" rows="10" placeholder="Body"><?= $body ?></textarea>
                 <div class="form__control">
                     <label for="thumbnail" checked>Upload Thumbnail</label>
-                    <input type="file" id="thumbnail">
+                    <input name="thumbnail" type="file" id="thumbnail">
                 </div>
-                <button type="submit" class="btn">Add Post</button>
+                <button name="submit" type="submit" class="btn">Add Post</button>
             </form>
         </main>
     </div>

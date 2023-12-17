@@ -3,6 +3,17 @@ include './partials/header.php';
 ?>
 
 <section class="dashboard">
+
+    <?php if (isset($_SESSION['add-post-success'])): ?>
+        <div class="alert__message success container">
+            <p>
+                <?= $_SESSION['add-post-success'];
+                unset($_SESSION['add-post-success']);
+                ?>
+            </p>
+        </div>
+    <?php endif ?>
+
     <div class="container dashboard__container">
         <button class="sidebar__toggle" id="show__sidebar-btn">
             <i class="uil uil-angle-right-b"></i>
@@ -65,49 +76,17 @@ include './partials/header.php';
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
-                        <td>Wildlife</td>
-                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>Landscape</td>
-                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-post.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing.</td>
-                        <td>Movie</td>
-                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam!</td>
-                        <td>Landscape</td>
-                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing.</td>
-                        <td>Movie</td>
-                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
-                        <td>Wildlife</td>
-                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>Landscape</td>
-                        <td><a href="admin/edit-post.php" class="btn sm">Edit</a></td>
-                        <td><a href="admin/delete-post.php" class="btn sm danger">Delete</a></td>
+                        <td>Blog's Title</td>
+                        <td>Blog's Category</td>
+                        <td><a href="<?= ROOT_URL ?>admin/edit-post.php?id=" class="btn sm">Edit</a>
+                        </td>
+                        <td><a href="<?= ROOT_URL ?>admin/delete-post.php?id=" class="btn sm danger">Delete</a></td>
                     </tr>
                 </tbody>
             </table>
+            <!-- <div class="alert__message error">
+                    <p>No blogs yet!</p>
+                </div> -->
         </main>
     </div>
 </section>
