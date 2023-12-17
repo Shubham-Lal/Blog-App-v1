@@ -1,5 +1,4 @@
 <?php
-session_start();
 require '../partials/header.php';
 
 if (!isset($_SESSION['user-id'])) {
