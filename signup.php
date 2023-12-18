@@ -16,7 +16,7 @@ unset($_SESSION['signup-data']);
 
 ?>
 
-<section class="form__section">
+<section class="form__section signup">
     <div class="container form__section-container">
         <h2>Sign Up</h2>
         <?php if (isset($_SESSION['signup'])): ?>

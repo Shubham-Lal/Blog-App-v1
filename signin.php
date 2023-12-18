@@ -12,7 +12,7 @@ unset($_SESSION['signin-data']);
 
 ?>
 
-<section class="form__section">
+<section class="form__section signin">
     <div class="container form__section-container">
         <h2>Sign In</h2>
         <?php if (isset($_SESSION['signup-success'])): ?>

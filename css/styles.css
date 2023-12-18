@@ -476,7 +476,12 @@ section.form__section {
 .form__section {
     display: grid;
     place-items: center;
-    height: 100vh;
+    min-height: 100svh;
+}
+
+.form__section.signin,
+.form__section.signup {
+    padding: 5rem 0;
 }
 
 .form__section-container {
