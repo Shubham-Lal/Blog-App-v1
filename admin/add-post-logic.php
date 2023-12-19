@@ -4,7 +4,7 @@ require './config/database.php';
 if (isset($_POST['submit'])) {
     $author_id = $_SESSION['user-id'];
     if (isset($_POST['is_featured']))
-        $is_featured = filter_var($_POST['is_featured'], FILTER_SANITIZE_NUMBER_INT);
+        $is_featured = 1;
     else
         $is_featured = 0;
     $title = filter_var($_POST['title'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -14,8 +14,6 @@ if (isset($_POST['submit'])) {
 
     if (!$title)
         $_SESSION['add-post'] = "Enter blog title!";
-    elseif (!$category_id)
-        $_SESSION['add-post'] = "Select blog category!";
     elseif (!$body)
         $_SESSION['add-post'] = "Enter blog description!";
     elseif (!$thumbnail['name'])
@@ -47,7 +45,7 @@ if (isset($_POST['submit'])) {
         header('location: ' . ROOT_URL . 'admin/add-post.php');
         die();
     } else {
-        if ($is_featured == 1) {
+        if ($is_featured) {
             $make_all_is_featured_to_zero_query = "UPDATE posts SET is_featured=0";
             $make_all_is_featured_to_zero_result = mysqli_query($connection, $make_all_is_featured_to_zero_query);
         }
@@ -55,16 +53,9 @@ if (isset($_POST['submit'])) {
         $query = "INSERT INTO posts (title, body, thumbnail, category_id, author_id, is_featured) VALUES ('$title', '$body', '$thumbnail_name', $category_id, $author_id, $is_featured)";
         $result = mysqli_query($connection, $query);
 
-        if (!mysqli_errno($connection)) {
-            $_SESSION['add-post-success'] = "Blog created successfully!";
-            header('location: ' . ROOT_URL . 'admin/');
-            die();
-        } else {
-            $_SESSION['add-post-data'] = $_POST;
-            $_SESSION['add-post'] = "Something went wrong! Try again...";
-            header('location: ' . ROOT_URL . 'admin/add-post.php');
-            die();
-        }
+        $_SESSION['add-post-success'] = "Blog created successfully!";
+        header('location: ' . ROOT_URL . 'admin/');
+        die();
     }
 } else {
     header('location: ' . ROOT_URL . 'admin/add-post.php');

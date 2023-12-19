@@ -15,8 +15,6 @@ if (isset($_POST['submit'])) {
 
     if (!$title)
         $_SESSION['edit-post'] = "Enter blog title!";
-    elseif (!$category_id)
-        $_SESSION['edit-post'] = "Select blog category!";
     elseif (!$body)
         $_SESSION['edit-post'] = "Enter blog description!";
     else {
@@ -53,7 +51,7 @@ if (isset($_POST['submit'])) {
         header('location: ' . ROOT_URL . 'admin/edit-post.php?id=' . $id);
         die();
     } else {
-        if ($is_featured == 1) {
+        if ($is_featured) {
             $make_all_is_featured_to_zero_query = "UPDATE posts SET is_featured=0";
             $make_all_is_featured_to_zero_result = mysqli_query($connection, $make_all_is_featured_to_zero_query);
         }

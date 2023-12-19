@@ -4,9 +4,14 @@ include './partials/header.php';
 $query = "SELECT * FROM categories ORDER BY CASE WHEN id = 1 THEN 0 ELSE 1 END, title ASC";
 $categories = mysqli_query($connection, $query);
 
-$title = $_SESSION['add-post-data']['title'] ?? null;
-$body = $_SESSION['add-post-data']['body'] ?? null;
-unset($_SESSION['add-post-data']);
+if (isset($_SESSION['add-post-data'])) {
+    $title = $_SESSION['add-post-data']['title'];
+    $body = $_SESSION['add-post-data']['body'];
+    unset($_SESSION['add-post-data']);
+} else {
+    $title = '';
+    $body = '';
+}
 ?>
 
 <section class="dashboard">

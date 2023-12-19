@@ -25,6 +25,22 @@ $posts = mysqli_query($connection, $query);
                 ?>
             </p>
         </div>
+    <?php elseif (isset($_SESSION['delete-post-success'])): ?>
+        <div class="alert__message success container">
+            <p>
+                <?= $_SESSION['delete-post-success'];
+                unset($_SESSION['delete-post-success']);
+                ?>
+            </p>
+        </div>
+    <?php elseif (isset($_SESSION['delete-post'])): ?>
+        <div class="alert__message error container">
+            <p>
+                <?= $_SESSION['delete-post'];
+                unset($_SESSION['delete-post']);
+                ?>
+            </p>
+        </div>
     <?php endif ?>
 
     <div class="container dashboard__container">
