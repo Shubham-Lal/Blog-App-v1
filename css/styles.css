@@ -290,6 +290,10 @@ nav button {
 /* END FEATURED */
 
 /* START POSTS */
+.posts.no-featured {
+    margin-top: 8rem;
+}
+
 .posts__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -840,6 +844,10 @@ select {
     .featured__container {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+
+    .posts.no-featured {
+        margin-top: 6rem;
     }
 
     .posts__container {
