@@ -5,7 +5,7 @@
         <a href="https://linkedin.com/in/shubham-lal" target="_blank"><i class="uil uil-linkedin"></i></a>
         <a href="https://youtube.com/@poorCERTY" target="_blank"><i class="uil uil-youtube"></i></a>
         <a href="https://x.com/shubhamlal_dev" target="_blank"><i class="uil uil-twitter"></i></a>
-        <a href="mailto: im.shubhamlal@gmail.com" target="_blank"><i class="uil uil-envelope"></i></a>
+        <a href="mailto:contact@shubhamlal.in" target="_blank"><i class="uil uil-envelope"></i></a>
     </div>
     <div class="container footer__container">
         <article>

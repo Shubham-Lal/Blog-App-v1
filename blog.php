@@ -7,10 +7,10 @@ $posts_result = mysqli_query($connection, $posts_query);
 
 <!-- SEARCH -->
 <section class="search__bar">
-    <form class="container search__bar-container" action="">
+    <form class="container search__bar-container" action="<?= ROOT_URL ?>search.php" method="GET">
         <div>
             <i class="uil uil-search"></i>
-            <input type="search" name="" placeholder="Search Blogs" />
+            <input type="search" name="search" placeholder="Search Blogs" />
         </div>
         <button type="submit" class="btn">Go</button>
     </form>
