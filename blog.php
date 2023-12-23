@@ -1,5 +1,8 @@
 <?php
 include './partials/header.php';
+
+$posts_query = "SELECT * FROM posts ORDER BY date_time DESC";
+$posts_result = mysqli_query($connection, $posts_query);
 ?>
 
 <!-- SEARCH -->
@@ -17,206 +20,54 @@ include './partials/header.php';
 <!-- POSTS -->
 <section class="posts">
     <div class="container posts__container">
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog2.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Robotics</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar3.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: John Mills</h5>
-                        <small>November 1, 2023 - 17:40</small>
+        <?php while ($post = mysqli_fetch_assoc($posts_result)): ?>
+            <article class="post">
+                <div class="post__thumbnail">
+                    <a href="<?= ROOT_URL . 'post.php?id=' . $post['id'] ?>">
+                        <img src="<?= ROOT_URL . 'images/' . $post['thumbnail'] ?>" alt="Blog">
+                    </a>
+                </div>
+                <div class="post__info">
+                    <?php
+                    $category_id = $post['category_id'];
+                    $category_query = "SELECT * FROM categories where id=$category_id LIMIT 1";
+                    $category_result = mysqli_query($connection, $category_query);
+                    $category = mysqli_fetch_assoc($category_result);
+                    ?>
+                    <a href="<?= ROOT_URL . 'category-posts.php?id=' . $category['id'] ?>" class="category__button">
+                        <?= $category['title'] ?>
+                    </a>
+                    <h3 class="post__title">
+                        <a href="<?= ROOT_URL . 'post.php?id=' . $post['id'] ?>">
+                            <?= $post['title'] ?>
+                        </a>
+                    </h3>
+                    <p class="post__body">
+                        <?= substr($post['body'], 0, 150) ?>
+                        <?= strlen($post['body']) > 150 ? "..." : "" ?>
+                    </p>
+                    <div class="post__author">
+                        <?php
+                        $author_id = $post['author_id'];
+                        $author_query = "SELECT * FROM users where id=$author_id LIMIT 1";
+                        $author_result = mysqli_query($connection, $author_query);
+                        $author = mysqli_fetch_assoc($author_result);
+                        ?>
+                        <div class="post__author-avatar">
+                            <img src="<?= ROOT_URL . 'images/' . $author['avatar'] ?>" alt="Author Avatar">
+                        </div>
+                        <div class="post__author-info">
+                            <h5>
+                                <?= 'By: ' . $author['firstname'] . ' ' . $author['lastname'] ?>
+                            </h5>
+                            <small>
+                                <?= date("M d, Y - H:i", strtotime($post['date_time'])) ?>
+                            </small>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog3.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Wildlife</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar4.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Ali</h5>
-                        <small>November 1, 2023 - 17:40</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog5.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Photography</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar5.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Milly Smith</h5>
-                        <small>November 1, 2023 - 17:40</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog6.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Food</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar7.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Sam</h5>
-                        <small>November 1, 2023 - 17:40</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog7.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Landscape</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar8.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: John Doe</h5>
-                        <small>November 1, 2023 - 17:40</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog8.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Landscape</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar9.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Willy</h5>
-                        <small>November 1, 2023 - 17:40</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog9.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Accessory</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar10.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Emma</h5>
-                        <small>November 1, 2023 - 17:40</small>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post__thumbnail">
-                <img src="./images/blog10.jpg" alt="Blog">
-            </div>
-            <div class="post__info">
-                <a href="category-posts.php" class="category__button">Movie</a>
-                <h3 class="post__title">
-                    <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                </h3>
-                <p class="post__body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum soluta, cupiditate
-                    blanditiis perferendis, illum inventore nobis recusandae officiis, quasi quod doloremque
-                    adipisci!
-                </p>
-                <div class="post__author">
-                    <div class="post__author-avatar">
-                        <img src="./images/avatar11.jpg" alt="Author Avatar">
-                    </div>
-                    <div class="post__author-info">
-                        <h5>By: Howard</h5>
-                        <small>November 1, 2023 - 17:40</small>
-                    </div>
-                </div>
-            </div>
-        </article>
+            </article>
+        <?php endwhile ?>
     </div>
 </section>
 <!-- END POSTS -->
@@ -224,12 +75,14 @@ include './partials/header.php';
 <!-- CATEGORIES -->
 <section class="category__buttons">
     <div class="container category__buttons-container">
-        <a href="category-posts.php" class="category__button">Movie</a>
-        <a href="category-posts.php" class="category__button">Technology</a>
-        <a href="category-posts.php" class="category__button">Wildlife</a>
-        <a href="category-posts.php" class="category__button">Landscape</a>
-        <a href="category-posts.php" class="category__button">Accessory</a>
-        <a href="category-posts.php" class="category__button">Photography</a>
+        <?php
+        $categories_query = "SELECT * FROM categories ORDER BY CASE WHEN id = 1 THEN 0 ELSE 1 END, title ASC";
+        $categories_result = mysqli_query($connection, $categories_query);
+        while ($category = mysqli_fetch_assoc($categories_result)): ?>
+            <a href="<?= ROOT_URL . 'category-posts.php?id=' . $category['id'] ?>" class="category__button">
+                <?= $category['title'] ?>
+            </a>
+        <?php endwhile ?>
     </div>
 </section>
 <!-- END CATEGORIES -->

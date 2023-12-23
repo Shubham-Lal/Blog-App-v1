@@ -11,12 +11,12 @@
         <article>
             <h4>Categories</h4>
             <ul>
-                <li><a href="#">Movie</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Wildlife</a></li>
-                <li><a href="#">Landscape</a></li>
-                <li><a href="#">Accessory</a></li>
-                <li><a href="#">Photography</a></li>
+                <?php
+                $categories_query = "SELECT * FROM categories ORDER BY CASE WHEN id = 1 THEN 0 ELSE 1 END, title ASC LIMIT 5";
+                $categories_result = mysqli_query($connection, $categories_query);
+                while ($category = mysqli_fetch_assoc($categories_result)): ?>
+                    <li><a href="<?= ROOT_URL . 'category-posts.php?id=' . $category['id'] ?>"><?= $category['title'] ?></a></li>
+                <?php endwhile ?>
             </ul>
         </article>
         <article>
