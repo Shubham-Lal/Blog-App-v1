@@ -1,45 +1,52 @@
 <?php
 include './partials/header.php';
+
+if (isset($_GET['id'])) {
+    $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+    $query = "SELECT * FROM posts WHERE id=$id";
+    $result = mysqli_query($connection, $query);
+    if (mysqli_num_rows($result) == 1) {
+        $post = mysqli_fetch_assoc($result);
+    } else {
+        header('location: ' . ROOT_URL . 'blog.php');
+        die();
+    }
+} else {
+    header('location: ' . ROOT_URL . 'blog.php');
+    die();
+}
 ?>
 
 <!-- SINGLE POST -->
 <section class="singlepost">
     <div class="container singlepost__container">
-        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque, maiores!</h2>
+        <h2>
+            <?= $post['title'] ?>
+        </h2>
         <div class="post__author">
+            <?php
+            $author_id = $post['author_id'];
+            $author_query = "SELECT * FROM users where id=$author_id LIMIT 1";
+            $author_result = mysqli_query($connection, $author_query);
+            $author = mysqli_fetch_assoc($author_result);
+            ?>
             <div class="post__author-avatar">
-                <img src="./images/avatar12.jpg" alt="Author Avatar">
+                <img src="<?= ROOT_URL . 'images/' . $author['avatar'] ?>" alt="Author Avatar">
             </div>
             <div class="post__author-info">
-                <h5>By: Jane Doe</h5>
-                <small>November 13, 2023 - 12:29</small>
+                <h5>
+                    <?= 'By: ' . $author['firstname'] . ' ' . $author['lastname'] ?>
+                </h5>
+                <small>
+                    <?= date("M d, Y - H:i", strtotime($post['date_time'])) ?>
+                </small>
             </div>
         </div>
         <div class="singlepost__thumbnail">
-            <img src="./images/blog1.jpg" alt="Blog">
+            <img src="<?= ROOT_URL . 'images/' . $post['thumbnail'] ?>" alt="Blog">
         </div>
         <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam alias debitis velit eaque quos iure
-            autem rerum ab saepe, sint vero omnis quam laboriosam fuga vitae, deserunt facilis cum ipsam error quia
-            amet excepturi? Earum esse libero hic cum ratione!
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo fuga accusantium quas suscipit quo!
-            Quibusdam nesciunt quidem enim vel, tenetur repellendus quisquam recusandae, illo, earum id veniam
-            optio! Libero nihil possimus, architecto ipsam tempore recusandae ratione. Molestiae, accusantium sint?
-            Dolore iste officia totam explicabo harum delectus ab magni modi provident.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis commodi quam molestias, quo minus
-            illo incidunt! Reprehenderit ipsam sit voluptate asperiores dicta, dolore facilis cum placeat nesciunt?
-            Molestias placeat vitae illo aliquid, neque dignissimos officiis aspernatur perspiciatis quod in dicta
-            esse temporibus quidem, consectetur repellendus facilis officia cum eligendi adipisci quis alias
-            repellat quas fugiat. Itaque odio voluptatibus ex officiis.
-        </p>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis non laborum illo exercitationem
-            debitis nam possimus assumenda quas sequi dignissimos amet itaque sapiente, saepe, magnam quia quis quae
-            doloremque voluptate.
+            <?= $post['body'] ?>
         </p>
     </div>
 </section>

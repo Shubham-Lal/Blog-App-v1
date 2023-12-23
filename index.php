@@ -20,7 +20,9 @@ $categories_result = mysqli_query($connection, $categories_query);
     <section class="featured">
         <div class="container featured__container">
             <div class="post__thumbnail">
-                <img src="<?= ROOT_URL . "images/" . $featured['thumbnail'] ?>" alt="Blog" />
+                <a href="<?= ROOT_URL . 'post.php?id=' . $featured['id'] ?>">
+                    <img src="<?= ROOT_URL . "images/" . $featured['thumbnail'] ?>" alt="Blog" />
+                </a>
             </div>
             <div class="post__info">
                 <?php
@@ -73,7 +75,9 @@ $categories_result = mysqli_query($connection, $categories_query);
             <?php while ($post = mysqli_fetch_assoc($posts_result)): ?>
                 <article class="post">
                     <div class="post__thumbnail">
-                        <img src="<?= ROOT_URL . 'images/' . $post['thumbnail'] ?>" alt="Blog">
+                        <a href="<?= ROOT_URL . 'post.php?id=' . $post['id'] ?>">
+                            <img src="<?= ROOT_URL . 'images/' . $post['thumbnail'] ?>" alt="Blog">
+                        </a>
                     </div>
                     <div class="post__info">
                         <?php
