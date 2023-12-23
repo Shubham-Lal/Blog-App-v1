@@ -71,7 +71,7 @@ $categories_result = mysqli_query($connection, $categories_query);
 <!-- POSTS -->
 <?php if (mysqli_num_rows($posts_result) > 0): ?>
     <section class="posts">
-        <div class="container posts__container <?= mysqli_num_rows($featured_result) < 1 ? 'no-featured' : '' ?>">
+        <div class="container posts__container">
             <?php while ($post = mysqli_fetch_assoc($posts_result)): ?>
                 <article class="post">
                     <div class="post__thumbnail">
@@ -124,8 +124,8 @@ $categories_result = mysqli_query($connection, $categories_query);
     </section>
 <?php else: ?>
     <section class="posts <?= mysqli_num_rows($featured_result) < 1 ? 'no-featured' : '' ?>">
-        <div class="container">
-            <div class="alert__message error">
+        <div class="container posts__container <?= mysqli_num_rows($featured_result) < 1 ? 'no-featured' : '' ?>">
+            <div class="alert__message error lg">
                 <p>No blogs yet!</p>
             </div>
         </div>

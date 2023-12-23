@@ -302,7 +302,7 @@ nav button {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
-    margin-bottom: 5rem;
+    /* margin-bottom: 5rem; */
 }
 
 .posts__container.no-featured {
